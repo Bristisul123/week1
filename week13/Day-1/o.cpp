@@ -9,46 +9,34 @@
 typedef unsigned long long  ull;
 using namespace std;
 
-int inverse(vector<int>v, int n)
-{
-      int ze =0, one = 0;
-      for(int i =0; i<n;i++)
-      {
-         if(v[i] == 1) one ++;
-         else ze += one;
-      }
-      return ze;
-}
 
 void solve()
 { 
 
-  int n,sum = 0, cnt = 0,id = -1; cin >>n;
-  vector<int>v(n);
-
+  int n,h,ans = 0; cin>>h>>n;
+  vector<int>a(n),c(n);
   for(int i=0;i<n;i++)
-    cin>>v[i];
-    
-    int ans = inverse(v,n);
-    for(int i = 0; i<n; i++)
-    {
-        if(v[i] == 0) {
-            v[i] = 1, id = i;
-            break;
-        }
-    }
-    ans = max(ans, inverse(v,n));
-    if(id != -1) v[id] = 0;
-    for(int i = n-1; i>=0; i--)
-    {
-        if(v[i] == 1) 
-        {
-             v[i] = 0;
-             break;
-        }
-    }
-    ans = max(ans, inverse(v,n));
-    cout<< ans <<nl;
+    cin>>a[i];
+  for(int i=0;i<n;i++)
+   cin>>c[i];
+
+   int l = 0,r = 1e12;
+   while(l <= r)
+   {
+     int mid = (l+r)/2;
+      int p = 0;
+      for(int i=0;i<n;i++)
+      {
+        int x = 1 + mid/c[i];
+        p += x*a[i];
+        if(p >= h)break;
+      }
+
+      if(p >= h)
+        ans = mid, r = mid -1;
+    else l = mid + 1;
+   }   
+   cout<< ans+1 <<nl;
 }
 int32_t main()
 {

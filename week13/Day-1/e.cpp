@@ -13,17 +13,23 @@ using namespace std;
 void solve()
 { 
 
-  int n,k,sum = 0, cnt = 0; cin >>n>>k;
-  string v[n];
-  for(int i=0;i<n;i++){
-      cin>>v[i];
-  }
-    for(int i=0;i<n;i+=k){
-    for(int j = 0; j<n ;j+=k)
-    cout<< v[i][j];
-    cout <<nl;
+  int n,cnt = 0; cin>>n;
+  int val = 32768 ,ans = 32768;
+for(int i = 0; i<= 15; i++)
+{
+    int x = n + i;
+    cnt = i;
+    while(x !=0)
+    {
+        x %= val;
+        if(x == 0) break;
+        x *= 2;
+        cnt++;
     }
-    
+    ans = min(ans, cnt);
+}
+  cout<< ans<<nl;
+ 
 }
 int32_t main()
 {

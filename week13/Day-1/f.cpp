@@ -13,17 +13,9 @@ using namespace std;
 void solve()
 { 
 
-  int n,k,sum = 0, cnt = 0; cin >>n>>k;
-  string v[n];
-  for(int i=0;i<n;i++){
-      cin>>v[i];
-  }
-    for(int i=0;i<n;i+=k){
-    for(int j = 0; j<n ;j+=k)
-    cout<< v[i][j];
-    cout <<nl;
-    }
-    
+  int n,m,k,sum = 0, cnt = 0,ind = -1; cin >>n;
+  cout<< n/4 +  (n%4 != 0)<<nl;
+
 }
 int32_t main()
 {
